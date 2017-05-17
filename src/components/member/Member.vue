@@ -1,44 +1,15 @@
 <template>
   <div class="member container">
-    {{msg}}
-  <!--Avatar Content-->
-  <div id="member-list" class="collection" v-cloak>
-    <a :href=item.link class="collection-item" v-for="item in anArray">
-      {{ item.name }}
-    </a>
-  </div>
-
-  <!--登録-->
-  <div id="member-insert">
-    <h5>メンバー登録</h5>
-    <form class="col scv gv12">
-      <div class="row">
-        <div class="input-field col s6">
-          <!--<i class="material-icons prefix">account_circle</i>-->
-          <input v-model="name" id="name" type="text" class="validate">
-          <label class="active" for="name">名前</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <!--<i class="material-icons prefix">insert_photo</i>-->
-          <input v-model="imageUrl" id="image" type="text">
-          <label class="active" for="image">画像</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <!--<i class="material-icons prefix">textsms</i>-->
-          <textarea v-model="comment" id="comment" class="materialize-textarea"></textarea>
-          <label class="active" for="comment">コメント</label>
-        </div>
-      </div>
-    </form>
-    <button @click="addItem" class="btn waves-effect waves-light" type="submit" name="action">
-            Submit
-            <!--<i class="material-icons right">send</i>-->
-        </button>
-  </div>
+    <h5>メンバー</h5>
+    <!--Avatar Content-->
+    <div id="member-list" class="collection" v-cloak>
+      <a :href=item.link class="collection-item" v-for="item in anArray">
+        {{ item.name }}　{{ item.comment }}
+      </a>
+    </div>
+  
+    <a href="member/new" class="waves-effect waves-light btn">
+      <i class="material-icons left">add</i>追加</a>
   </div>
 </template>
 
@@ -55,9 +26,23 @@ export default {
   created() {
     this.anArray = [
       {
-        date: '2017/05/17 (日)',
-        name: '名前',
-        comment: 'いつもの練習',
+        name: '名前1',
+        comment: 'コメント',
+        link: 'link'
+      },
+      {
+        name: '名前2',
+        comment: 'コメント',
+        link: 'link'
+      },
+      {
+        name: '名前3',
+        comment: 'コメント',
+        link: 'link'
+      },
+      {
+        name: '名前4',
+        comment: 'コメント',
         link: 'link'
       }
     ]

@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
 import Schedule from '@/components/schedule/Schedule'
+import NewSchedule from '@/components/schedule/New'
 import Member from '@/components/member/Member'
+import NewMember from '@/components/member/New'
 import Buhi from '@/components/buhi/Buhi'
 
 Vue.use(Router)
@@ -19,8 +21,16 @@ export default new Router({
       component: Schedule
     },
     {
+      path: '/schedule/new',
+      component: NewSchedule
+    },
+    {
       path: '/member',
       component: Member
+    },
+    {
+      path: '/member/new',
+      component: NewMember
     },
     {
       path: '/buhi',

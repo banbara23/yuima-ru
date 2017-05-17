@@ -1,8 +1,8 @@
 <template>
   <div class="schedule container">
+    <h5>出席登録</h5>
     <div class="row"
-         id="schedule"
-         v-cloak>
+         id="schedule">
       <div class="col s12"
            v-for="events in anArray">
         <a :href=events.link>
@@ -17,6 +17,9 @@
           </div>
         </a>
       </div>
+    </div>
+    <div class="row">
+    <a href="schedule/new" class="waves-effect waves-light btn"><i class="material-icons left">add</i>New</a>
     </div>
   </div>
 </template>

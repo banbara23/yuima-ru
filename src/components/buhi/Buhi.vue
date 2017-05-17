@@ -1,7 +1,8 @@
 <template>
   <div class="buhi container">
-    {{msg}}
-  
+    <h5>部費</h5>
+  <p>現在の金額：10000円</p>
+  <p>履歴</p>
   </div>
 </template>
 
