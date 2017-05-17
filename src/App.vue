@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <navbar />
+    <!--<img src="./assets/logo.png">-->
     <router-view></router-view>
+    <myFooter />
   </div>
 </template>
 
 <script>
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    navbar: Navbar,
+    myFooter: Footer
+  }
 }
 </script>
 
@@ -18,6 +26,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
