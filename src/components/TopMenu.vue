@@ -2,7 +2,7 @@
   <div class="menu">
     <p>{{msg}}</p>
     <div class="col s12">
-      <a href="#">
+      <a href="schedule">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
@@ -16,7 +16,7 @@
 
     <!--メンバー-->
     <div class="col s12">
-      <a href="#">
+      <a href="member">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
@@ -30,7 +30,7 @@
 
     <!--部費-->
     <div class="col s12">
-      <a href="#">
+      <a href="buhi">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
