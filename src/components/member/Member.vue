@@ -28,22 +28,22 @@ export default {
       {
         name: '名前1',
         comment: 'コメント',
-        link: 'link'
+        link: 'member/1'
       },
       {
         name: '名前2',
         comment: 'コメント',
-        link: 'link'
+        link: 'member/2'
       },
       {
         name: '名前3',
         comment: 'コメント',
-        link: 'link'
+        link: 'member/3'
       },
       {
         name: '名前4',
         comment: 'コメント',
-        link: 'link'
+        link: 'member/4'
       }
     ]
   }

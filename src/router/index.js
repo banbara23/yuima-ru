@@ -6,6 +6,7 @@ import ScheduleDetail from '@/components/schedule/Detail'
 import Entry from '@/components/schedule/Entry'
 import NewSchedule from '@/components/schedule/New'
 import Member from '@/components/member/Member'
+import MemberDetail from '@/components/member/Detail'
 import NewMember from '@/components/member/New'
 import Buhi from '@/components/buhi/Buhi'
 
@@ -41,6 +42,10 @@ export default new Router({
     {
       path: '/member/new',
       component: NewMember
+    },
+    {
+      path: '/member/:id',
+      component: MemberDetail
     },
     {
       path: '/buhi',
