@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
   <!--登録-->
   <div id="member-insert">
     <h5>メンバー登録</h5>

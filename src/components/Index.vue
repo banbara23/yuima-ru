@@ -1,5 +1,5 @@
 <template>
-  <div class="index container">
+  <div class="index">
     <top-menu />
   </div>
 </template>

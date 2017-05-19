@@ -1,5 +1,5 @@
 <template>
-  <div class="member container">
+  <div class="member">
     <h5>メンバー</h5>
     <!--Avatar Content-->
     <div id="member-list" class="collection" v-cloak>

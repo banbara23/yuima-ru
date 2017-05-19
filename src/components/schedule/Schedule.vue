@@ -1,5 +1,5 @@
 <template>
-  <div class="schedule container">
+  <div class="schedule">
     <h5>出席登録</h5>
     <div class="row"
          id="schedule">
@@ -40,13 +40,13 @@ export default {
       date: '2017/05/17 (日)',
       title: '春日町で練習',
       comment: 'いつもの練習',
-      link: 'detail/20170617'
+      link: 'schedule/20170617'
     },
       {
         date: '2017/05/18 (日）',
         title: '春日町で練習',
         comment: 'チャラ座と練習試合かも',
-        link: 'detail/20170617'
+        link: 'schedule/20170617'
       }
     ]
   }

@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <navbar />
-    <!--<img src="./assets/logo.png">-->
-    <router-view></router-view>
-    <myFooter />
+    <div class="container">
+      <!--<img src="./assets/logo.png">-->
+      <router-view></router-view>
+    </div>
+    <myFooter id='footer'/>
   </div>
 </template>
 
