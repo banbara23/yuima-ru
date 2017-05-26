@@ -61,8 +61,8 @@ export default {
       });
   },
   methods: {
-    addItem: ()=> {
- 
+    addItem:function () {
+      this.$router.push('/schedule');
     }
   }
 }

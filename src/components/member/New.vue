@@ -29,7 +29,7 @@
     <button @click="addItem" class="btn waves-effect waves-light" type="submit" name="action">
             登録
             <i class="material-icons right">send</i>
-        </button>
+    </button>
   </div>
   </div>
 </template>
@@ -52,6 +52,11 @@ export default {
         link: 'link'
       }
     ]
+  },
+  methods: {
+    addItem:function () {
+      this.$router.push('/member');
+    }
   }
 }
 </script>
