@@ -56,6 +56,10 @@
         </table>
       </div>
     </div>
+   <!--登録ボタン-->
+        <button @click="goScheduleTop" class="btn waves-effect waves-light" type="submit" name="action">
+                スケジュールトップ
+        </button>
   </div>
 </template>
 
@@ -78,6 +82,11 @@ export default {
         link: 'link'
       }
     ]
+  },
+  methods: {
+    goScheduleTop:function () {
+      this.$router.push('/schedule');
+    }
   }
 }
 </script>

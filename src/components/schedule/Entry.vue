@@ -5,7 +5,8 @@
     <p>場所：練馬春日小学校</p>
     <p>コメント：今回はたくさんくるぞー</p>
   
-    <div>
+    <div class="card">
+      <div class="card-content">
       <form action="#">
         <p>
           <input name="group1" type="radio" id="test1" />
@@ -23,10 +24,14 @@
           <textarea id="textarea1" class="materialize-textarea"></textarea>
           <label for="textarea1">コメント</label>
         </div>
-        <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
+
+        <!--登録ボタン-->
+        <button @click="addItem" class="btn waves-effect waves-light" type="submit" name="action">
+                登録
+                <i class="material-icons right">send</i>
         </button>
       </form>
+      </div>
     </div>
   
   </div>
@@ -34,7 +39,12 @@
 
 <script>
 export default {
-  name: 'entry'
+  name: 'entry',
+  methods: {
+    addItem:function () {
+      this.$router.push('/schedule/20170617');
+    }
+  }
 }
 </script>
 

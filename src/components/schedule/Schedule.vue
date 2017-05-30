@@ -1,6 +1,6 @@
 <template>
   <div class="schedule">
-    <h5>出席登録</h5>
+    <h2>出席登録</h2>
     <div class="row"
          id="schedule">
       <div class="col s12"
