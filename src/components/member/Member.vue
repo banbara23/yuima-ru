@@ -22,6 +22,7 @@
           <h4>{{ item.name }}</h4>
           <p>ポジション：{{ item.position}}</p>
           <p>コメント：{{ item.comment }}</p>
+          <a href="member/new" class="waves-effect waves-teal btn-flat"><i class="material-icons">mode_edit</i></a>
         </div>
       </div>
     </div>
