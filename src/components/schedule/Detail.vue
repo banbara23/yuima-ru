@@ -1,43 +1,66 @@
 <template>
   <div class="detail">
-    <h5>{{title}}</h5>
-    <p>日時：2017/05/20 10〜14時</p>
-    <p>場所：練馬春日小学校</p>
-    <p>コメント：今回はたくさんくるぞー</p>
-
-    <ul class="collection">
-      
-    <li class="collection-item avatar">
-      <img src="../../assets/alvin.png" alt="" class="circle">
-      <span class="title">名前</span>
-      <p>コメント</p>
-      <div class="secondary-content"><a class="blue waves-effect waves-light btn" href="/schedule/entry/1">参加</a></div>
-    </li>
-
-    <li class="collection-item avatar">
-      <i class="material-icons circle ">perm_identity</i>
-      <span class="title">名前</span>
-      <p>コメント</p>
-      <div class="secondary-content"><a class="orange waves-effect waves-light btn" href="/schedule/entry/1">未定</a></div>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle">perm_identity</i>
-      <span class="title">名前</span>
-      <p>コメント</p>
-      <div class="secondary-content"><a class="red waves-effect waves-light btn" href="/schedule/entry/1">欠席</a></div>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle">perm_identity</i>
-      <span class="title">名前</span>
-      <p>コメント</p>
-      <div class="secondary-content"><a class="red waves-effect waves-light btn" href="/schedule/entry/1">欠席</a></div>
-    </li>
-  </ul>
-
-   <!--登録ボタン-->
-        <button @click="goScheduleTop" class="btn waves-effect waves-light" type="submit" name="action">
-                スケジュールトップ
-        </button>
+    <!--情報-->
+    <h2>予定詳細</h2>
+    <div class="row card">
+      <div class="card-content">
+        <span class="card-title">練習</span>
+        <p>日時：2017/05/20 10〜14時</p>
+        <p>場所：練馬春日小学校</p>
+        <p>コメント：今回はたくさんくるぞー</p>
+        <!--<button @click="goEdit"
+                  class="btn waves-effect waves-light"
+                  type="submit"
+                  name="action">
+            編集
+          </button>-->
+      </div>
+      <div class="card-action">
+        <a href="/schedule/New">修正</a>  
+      </div>
+    </div>
+  
+    <!--まとめ数字-->
+    <div class="row section card">
+      <div class="col s4 l4 center">
+        <h4>参加</h4>
+        <h4>1</h4>
+      </div>
+      <div class="col s4 l4 center">
+        <h4>欠席</h4>
+        <h4>1</h4>
+      </div>
+      <div class="col s4 l4 center">
+        <h4>未定</h4>
+        <h4>1</h4>
+      </div>
+    </div>
+  
+    <!--リスト-->
+    <div class="row">
+      <ul class="collection card">
+        <li class="collection-item avatar"
+            v-for="item in anArray">
+          <!--<img v-if="item.image"
+                     :src="item.image"
+                     alt=""
+                     class="circle">-->
+          <i class="material-icons circle ">perm_identity</i>
+          <span class="title">{{item.name}}</span>
+          <p>{{item.comment}}</p>
+          <div class="secondary-content"><a class="blue waves-effect waves-light btn"
+               href="/schedule/entry/1">参加</a></div>
+        </li>
+      </ul>
+    </div>
+  
+    <!--登録ボタン-->
+    <button @click="goScheduleTop"
+            class="btn waves-effect waves-light"
+            type="submit"
+            name="action">
+      スケジュールトップ
+    </button>
   </div>
 </template>
 
@@ -54,16 +77,62 @@ export default {
   created() {
     this.anArray = [
       {
-        date: '2017/05/17 (日)',
+        id: 'moja',
         name: '名前',
-        comment: 'いつもの練習',
-        link: 'link'
+        comment: '何かしらのコメント',
+        answer: '回答',
+        image: '../../assets/alvin.png'
+      },
+      {
+        id: '2',
+        name: '名前',
+        comment: '何かしらのコメント',
+        answer: '回答',
+        image: '../../assets/alvin.png'
+      },
+      {
+        id: '3',
+        name: '名前',
+        comment: '何かしらのコメント',
+        answer: '回答',
+        image: '../../assets/alvin.png'
+      },
+      {
+        id: '4',
+        name: '名前',
+        comment: '何かしらのコメント',
+        answer: '回答',
+        image: '../../assets/alvin.png'
+      },
+      {
+        id: '5',
+        name: '名前',
+        comment: '何かしらのコメント',
+        answer: '回答',
+        image: '../../assets/alvin.png'
+      },
+      {
+        id: '6',
+        name: '名前',
+        comment: '何かしらのコメント',
+        answer: '回答',
+        image: '../../assets/alvin.png'
+      },
+      {
+        id: '7',
+        name: '名前',
+        comment: '何かしらのコメント',
+        answer: '回答',
+        image: '../../assets/alvin.png'
       }
     ]
   },
   methods: {
-    goScheduleTop:function () {
+    goScheduleTop: function () {
       this.$router.push('/schedule');
+    },
+    goEdit: function () {
+      this.$router.push('/schedule/New');
     }
   }
 }
