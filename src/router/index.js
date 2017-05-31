@@ -14,42 +14,52 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
     {
       path: '/',
-      component: Index
+      component: Index,
+      meta: {title: 'ゆいま〜る'}
     },
     {
       path: '/schedule',
-      component: Schedule
+      component: Schedule,
+      meta: {title: 'スケジュール - ゆいま〜る'}
     },
     {
       path: '/schedule/new',
-      component: NewSchedule
+      component: NewSchedule,
+      meta: { title: 'スケジュール登録 - ゆいま〜る' }
     },
     {
       path: '/schedule/:id',
-      component: ScheduleDetail
+      component: ScheduleDetail,
+      meta: { title: 'スケジュール詳細 - ゆいま〜る' }
     },
     {
       path: '/schedule/entry/:id',
-      component: Entry
+      component: Entry,
+      meta: { title: 'スケジュール回答 - ゆいま〜る' }
     },
     {
       path: '/member',
-      component: Member
+      component: Member,
+      meta: { title: 'メンバー - ゆいま〜る' }
     },
     {
       path: '/member/new',
-      component: NewMember
+      component: NewMember,
+      meta: { title: 'メンバー登録 - ゆいま〜る' }
     },
     {
       path: '/member/:id',
-      component: MemberDetail
+      component: MemberDetail,
+      meta: { title: 'メンバー詳細 - ゆいま〜る' }
     },
     {
       path: '/buhi',
-      component: Buhi
+      component: Buhi,
+      meta: { title: '部費 - ゆいま〜る' }
     }
   ]
 })
