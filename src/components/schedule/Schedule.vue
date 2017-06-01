@@ -1,7 +1,6 @@
 <template>
   <div class="schedule">
-    <h5>出席登録</h5>
-    {{schedule}}
+    <h2>出席登録</h2>
     <div class="row" id="schedule">
       <div class="col s12" v-for="events in anArray">
         <a :href=events.link>
@@ -57,8 +56,8 @@ export default {
     ]
   },
   methods: {
-    add: () =>{
-     
+    add: () => {
+
     }
   }
 }

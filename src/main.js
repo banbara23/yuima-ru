@@ -8,6 +8,11 @@ import vuefire from 'vuefire'
 Vue.config.productionTip = false
 Vue.use(vuefire)
 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

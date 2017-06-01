@@ -2,40 +2,55 @@
   <div>
   <!--登録-->
   <div id="member-insert">
-    <h5>メンバー登録</h5>
+    <h2>メンバー登録</h2>
     <form class="col scv gv12">
+
+      <!--名前-->
       <div class="row">
-        <div class="input-field col s12">
-          <!--<i class="material-icons prefix">account_circle</i>-->
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
           <input v-model="name" id="name" type="text" class="validate">
           <label class="active" for="name">名前</label>
         </div>
       </div>
-      <div class="row">
+
+      <!--画像-->
+      <!--<div class="row">
         <div class="input-field col s6">
-          <!--<i class="material-icons prefix">insert_photo</i>-->
           <input v-model="imageUrl" id="image" type="text">
           <label class="active" for="image">画像</label>
         </div>
+      </div>-->
+
+      <!--ポジション-->
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <input v-model="name" id="position" type="text" class="validate">
+          <label class="active" for="name">ポジション</label>
+        </div>
       </div>
+
+      <!--コメント-->
       <div class="row">
         <div class="input-field col s12">
-          <!--<i class="material-icons prefix">textsms</i>-->
+          <i class="material-icons prefix">mode_edit</i>
           <textarea v-model="comment" id="comment" class="materialize-textarea"></textarea>
           <label class="active" for="comment">コメント</label>
         </div>
       </div>
     </form>
+
+    <!--登録ボタン-->
     <button @click="addItem" class="btn waves-effect waves-light" type="submit" name="action">
             登録
             <i class="material-icons right">send</i>
-        </button>
+    </button>
   </div>
   </div>
 </template>
 
 <script>
-// import TopMenu from '@/components/TopMenu'
 export default {
   data() {
     return {
@@ -43,15 +58,11 @@ export default {
       anArray: []
     }
   },
-  created() {
-    this.anArray = [
-      {
-        date: '2017/05/17 (日)',
-        name: '名前',
-        comment: 'いつもの練習',
-        link: 'link'
-      }
-    ]
+  methods: {
+    // 登録を押下
+    addItem:function () {
+      this.$router.push('/member');
+    }
   }
 }
 </script>
