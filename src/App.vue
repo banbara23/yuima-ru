@@ -12,6 +12,10 @@
 <script>
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+// import firebase from 'firebase'
+// import firebaseconfig from '../firebase-config.json'
+// firebase.initializeApp(firebaseconfig);
+
 export default {
   name: 'app',
   components: {
