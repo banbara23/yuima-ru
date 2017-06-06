@@ -1,23 +1,29 @@
 <template>
   <div class="schedule">
     <h2>出席登録</h2>
-    <div class="row" id="schedule">
-      <div class="col s12" v-for="events in anArray">
-        <a :href=events.link>
+    <div class="row"
+         id="schedule">
+      <div class="col s12"
+           v-for="events in anArray">
+        <router-link :to=events.link>
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">
-                {{ events.date }} {{ events.title }}
-              </span>
+                  {{ events.date }} {{ events.title }}
+                </span>
               <p>{{ events.comment }}</p>
             </div>
           </div>
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="row">
-      <a href="schedule/new" class="waves-effect waves-light btn" @click="add">
-        <i class="material-icons left">add</i>New</a>
+      <div class="col s12">
+        <router-link to="schedule/new"
+                     class="waves-effect waves-light btn"
+                     @click="add">
+          <i class="material-icons left">add</i>New</router-link>
+      </div>
     </div>
   </div>
 </template>

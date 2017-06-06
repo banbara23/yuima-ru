@@ -22,13 +22,13 @@
           <h4>{{ item.name }}</h4>
           <p>ポジション：{{ item.position}}</p>
           <p>コメント：{{ item.comment }}</p>
-          <a href="member/new" class="waves-effect waves-teal btn-flat"><i class="material-icons">mode_edit</i></a>
+          <router-link to="member/new" class="waves-effect waves-teal btn-flat"><i class="material-icons">mode_edit</i></router-link>
         </div>
       </div>
     </div>
   
-    <a href="member/new" class="waves-effect waves-light btn">
-      <i class="material-icons left">add</i>追加</a>
+    <router-link to="member/new" class="waves-effect waves-light btn">
+      <i class="material-icons left">add</i>追加</router-link>
   </div>
 </template>
 

@@ -2,7 +2,8 @@
   <div class="menu">
     <p>{{msg}}</p>
     <div class="col s12">
-      <a href="schedule">
+      
+      <router-link to="schedule">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
@@ -11,12 +12,12 @@
             <p>練習への参加登録はこちら</p>
           </div>
         </div>
-      </a>
+      </router-link>
     </div>
 
     <!--メンバー-->
     <div class="col s12">
-      <a href="member">
+      <router-link to="member">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
@@ -25,12 +26,12 @@
             <p>ゆかいな仲間たち</p>
           </div>
         </div>
-      </a>
+      </router-link>
     </div>
 
     <!--部費-->
     <div class="col s12">
-      <a href="buhi">
+      <router-link to="buhi">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
@@ -39,7 +40,7 @@
             <p>(￥v￥)</p>
           </div>
         </div>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

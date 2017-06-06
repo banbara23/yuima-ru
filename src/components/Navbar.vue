@@ -1,17 +1,17 @@
 <template>
   <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo center">ゆいま〜る</a>
-      <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+      <router-link to="/" class="brand-logo center">ゆいま〜る</router-link>
+      <router-link to="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></router-link>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/schedule">出席登録</a></li>
-        <li><a href="/member">メンバー</a></li>
-        <li><a href="/buhi">部費</a></li>
+        <li><router-link to="/schedule">出席登録</router-link></li>
+        <li><router-link to="/member">メンバー</router-link></li>
+        <li><router-link to="/buhi">部費</router-link></li>
       </ul>
       <ul class="side-nav" id="mobile-nav">
-        <li><a href="/schedule">出席登録</a></li>
-        <li><a href="/member">メンバー</a></li>
-        <li><a href="/buhi">部費</a></li>
+        <li><router-link to="/schedule">出席登録</router-link></li>
+        <li><router-link to="/member">メンバー</router-link></li>
+        <li><router-link to="/buhi">部費</router-link></li>
       </ul>
     </div>
   </nav>

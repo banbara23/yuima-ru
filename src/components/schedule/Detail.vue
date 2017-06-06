@@ -16,7 +16,7 @@
           </button>-->
       </div>
       <div class="card-action">
-        <a href="/schedule/New">修正</a>  
+        <router-link to="/schedule/New">修正</router-link>  
       </div>
     </div>
   
@@ -48,8 +48,8 @@
           <i class="material-icons circle ">perm_identity</i>
           <span class="title">{{item.name}}</span>
           <p>{{item.comment}}</p>
-          <div class="secondary-content"><a class="blue waves-effect waves-light btn"
-               href="/schedule/entry/1">参加</a></div>
+          <div class="secondary-content"><router-link class="blue waves-effect waves-light btn"
+               to="/schedule/entry/1">参加</router-link></div>
         </li>
       </ul>
     </div>

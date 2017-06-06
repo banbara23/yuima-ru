@@ -6,24 +6,22 @@
           <h5 class="white-text">ゆいま〜る とは</h5>
           <p class="grey-text text-lighten-4">沖縄方言で友情の輪という意味です。</p>
         </div>
-        <!--<div class="col l4 offset-l2 s12">
+        <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Links</h5>
           <ul>
             <li><a class="grey-text text-lighten-3"
-                 href="#!">Link 1</a></li>
+                 href="http://materializecss.com/">Materialize</a></li>
             <li><a class="grey-text text-lighten-3"
-                 href="#!">Link 2</a></li>
+                 href="https://jp.vuejs.org/">Vue.js</a></li>
             <li><a class="grey-text text-lighten-3"
-                 href="#!">Link 3</a></li>
-            <li><a class="grey-text text-lighten-3"
-                 href="#!">Link 4</a></li>
+                 href="https://router.vuejs.org/ja/">Vue-Router2</a></li>
           </ul>
-        </div>-->
+        </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-        © 2017 ikemura
+        © 2017 yuima-ru
         <!--<a class="grey-text text-lighten-4 right"
            href="#!">More Links</a>-->
       </div>
