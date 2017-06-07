@@ -1,11 +1,12 @@
 <template>
-  <div class="schedule">
+  <div class="schedule-list">
+    <vue-progress-bar></vue-progress-bar>
     <h2>出席登録</h2>
     <div class="row"
          id="schedule">
       <div class="col s12"
            v-for="events in anArray">
-        <router-link :to=events.link>
+        <router-link :to=events.id>
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">
@@ -29,37 +30,41 @@
 </template>
 
 <script>
-// import firebaseApp from 'firebase'
-// var db = firebaseApp.database().ref('/schedule/')
+import firebase from 'firebase'
+const db = firebase.database()
 
 export default {
-  name: 'schedule',
-  // firebase: function () {
-  //   return {
-  //     schedule: db.ref('/')
-  //   }
-  // },
+  name: 'schedule-list',
   data() {
     return {
       msg: 'test',
       anArray: []
     }
   },
-  created() {
-    this.anArray = [
-      {
-        date: '2017/05/17 (日)',
-        title: '春日町で練習',
-        comment: 'いつもの練習',
-        link: 'schedule/20170617'
-      },
-      {
-        date: '2017/05/18 (日）',
-        title: '春日町で練習',
-        comment: 'チャラ座と練習試合かも',
-        link: 'schedule/20170617'
+  created() {  
+    this.$Progress.start()
+    // this.anArray = [
+    //   {
+    //     date: '2017/05/17 (日)',
+    //     title: '春日町で練習',
+    //     comment: 'いつもの練習',
+    //     id: 'schedule/20170617'
+    //   },
+    //   {
+    //     date: '2017/05/18 (日）',
+    //     title: '春日町で練習',
+    //     comment: 'チャラ座と練習試合かも',
+    //     id: 'schedule/20170617'
+    //   }
+    // ]
+  },
+ firebase: {
+    anArray: {
+      source: db.ref("/schedule"),
+      readyCallback: function () {
+        this.$Progress.finish()
       }
-    ]
+    }
   },
   methods: {
     add: () => {
