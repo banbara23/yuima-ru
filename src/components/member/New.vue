@@ -3,11 +3,11 @@
   <!--登録-->
   <div id="member-insert">
     <h2>メンバー登録</h2>
-    <form class="col scv gv12">
+    <form>
 
       <!--名前-->
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
           <i class="material-icons prefix">account_circle</i>
           <input v-model="name" id="name" type="text" class="validate">
           <label class="active" for="name">名前</label>
@@ -24,7 +24,7 @@
 
       <!--ポジション-->
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
           <i class="material-icons prefix">mode_edit</i>
           <input v-model="name" id="position" type="text" class="validate">
           <label class="active" for="name">ポジション</label>

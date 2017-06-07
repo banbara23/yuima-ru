@@ -6,7 +6,7 @@
       <form class="col scv gv12">
   
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
             <input v-model="name"
                    id="name"
@@ -17,14 +17,15 @@
         </div>
   
         <div class="row">
-          <div class="input-field col s3">
+          <div class="input-field col s12">
             <i class="material-icons prefix">schedule</i>
             <input type="date"
                    class="datepicker">
-            <label for="datepicker">日付</label>
+            <label for="datepicker"></label>
           </div>
-  
-          <div class="input-field col s3">
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
             <input v-model="imageUrl"
                    value="10:00"
@@ -32,7 +33,7 @@
                    type="text">
             <label for="time_start">開始時間</label>
           </div>
-          <div class="input-field col s3">
+          <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
             <input v-model="imageUrl"
                    value="14:00"
@@ -42,7 +43,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12">
             <i class="material-icons prefix">room</i>
             <input v-model="imageUrl"
                    id="place"
