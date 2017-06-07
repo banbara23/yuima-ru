@@ -8,47 +8,51 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
-            <input v-model="name"
-                   id="name"
+            <input v-model="title"
+                   id="title"
                    type="text"
                    class="validate">
-            <label for="name">タイトル</label>
+            <label for="title"
+                   v-if="!title">タイトル</label>
           </div>
         </div>
   
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">schedule</i>
-            <input type="date"
+            <input v-model="date"
+                   type="date"
                    class="datepicker">
             <label for="datepicker"></label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
-            <input v-model="imageUrl"
-                   value="10:00"
+            <input v-model="startTime"
                    id="time_start"
                    type="text">
-            <label for="time_start">開始時間</label>
+            <label for="time_start"
+                   v-if="!startTime">開始時間</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
-            <input v-model="imageUrl"
-                   value="14:00"
+            <input v-model="endTime"
                    id="time_end"
                    type="text">
-            <label for="time_end">終了時間</label>
+            <label for="time_end"
+                   v-if="!endTime">終了時間</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">room</i>
-            <input v-model="imageUrl"
+            <input v-model="place"
                    id="place"
                    type="text">
-            <label for="place">場所</label>
+            <label for="place"
+                   v-if="!place">施設</label>
           </div>
   
           <div class="input-field col s12">
@@ -56,7 +60,8 @@
             <textarea v-model="comment"
                       id="comment"
                       class="materialize-textarea"></textarea>
-            <label for="comment">コメント</label>
+            <label for="comment"
+                   v-if="!comment">コメント</label>
           </div>
         </div>
       </form>
@@ -74,22 +79,20 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   data() {
     return {
-      msg: 'member',
-      anArray: []
+      title: '練習',
+      date: '2017/06/22',
+      startTime: '10:00',
+      endTime: '14:00',
+      place: '練馬春日町小学校',
+      comment: 'いつもの練習です'
     }
   },
   mounted() {
-    this.anArray = [
-      {
-        date: '2017/05/17 (日)',
-        name: '名前',
-        comment: 'いつもの練習',
-        link: 'link'
-      }
-    ]
     $('.datepicker').pickadate({
       selectMonths: true,
       today: true,
@@ -101,7 +104,21 @@ export default {
   },
   methods: {
     addItem: function () {
-      this.$router.push('/schedule');
+
+      const id = this.date.replace('/','').replace('/','')
+      const sendData = {
+        id:id,
+        date: this.date,
+        title: this.title,
+        date: this.date,
+        startTime: this.startTime,
+        endTime: this.endTime,
+        comment: this.comment
+      }
+      firebase.database()
+        .ref(`/schedule/${id}`)
+        .set(sendData)
+        .then(this.$router.push('/schedule'))
     }
   }
 }
