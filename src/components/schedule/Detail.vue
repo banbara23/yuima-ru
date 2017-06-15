@@ -1,5 +1,6 @@
 <template>
   <div class="detail">
+    <vue-progress-bar></vue-progress-bar>
     <!--情報-->
     <h2>予定詳細</h2>
     <div class="row card">
@@ -65,6 +66,8 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+const db = firebase.database()
 // import TopMenu from '@/components/TopMenu'
 export default {
   name: 'name',
@@ -74,7 +77,20 @@ export default {
       anArray: []
     }
   },
-  created() {
+ firebase() {
+   return {
+     detail: {
+       source: db.ref("/schedule")
+       .child(this.$route.params.id),
+       asObject: true,
+        readyCallback: function () {
+          this.$Progress.finish();
+        }
+     }
+   }
+  },
+  created() {  
+    this.$Progress.start();
     this.anArray = [
       {
         id: 'moja',

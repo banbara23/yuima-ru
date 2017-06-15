@@ -6,7 +6,7 @@
          id="schedule">
       <div class="col s12"
            v-for="events in anArray">
-        <router-link :to=events.id>
+        <router-link :to="`schedule/${events.id}`">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">
