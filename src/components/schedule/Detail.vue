@@ -10,14 +10,14 @@
         <p>場所：練馬春日小学校</p>
         <p>コメント：今回はたくさんくるぞー</p>
         <!--<button @click="goEdit"
-                  class="btn waves-effect waves-light"
-                  type="submit"
-                  name="action">
-            編集
-          </button>-->
+                    class="btn waves-effect waves-light"
+                    type="submit"
+                    name="action">
+              編集
+            </button>-->
       </div>
       <div class="card-action">
-        <router-link to="/schedule/New">修正</router-link>  
+        <router-link to="/schedule/New">修正</router-link>
       </div>
     </div>
   
@@ -43,14 +43,16 @@
         <li class="collection-item avatar"
             v-for="item in anArray">
           <!--<img v-if="item.image"
-                     :src="item.image"
-                     alt=""
-                     class="circle">-->
+                       :src="item.image"
+                       alt=""
+                       class="circle">-->
           <i class="material-icons circle ">perm_identity</i>
           <span class="title">{{item.name}}</span>
           <p>{{item.comment}}</p>
-          <div class="secondary-content"><router-link class="blue waves-effect waves-light btn"
-               to="/schedule/entry/1">参加</router-link></div>
+          <div class="secondary-content">
+            <router-link class="blue waves-effect waves-light btn"
+                         to="/schedule/entry/1">参加</router-link>
+          </div>
         </li>
       </ul>
     </div>
@@ -77,19 +79,19 @@ export default {
       anArray: []
     }
   },
- firebase() {
-   return {
-     detail: {
-       source: db.ref("/schedule")
-       .child(this.$route.params.id),
-       asObject: true,
+  firebase() {
+    return {
+      detail: {
+        source: db.ref("/schedule")
+          .child(this.$route.params.id),
+        asObject: true,
         readyCallback: function () {
           this.$Progress.finish();
         }
-     }
-   }
+      }
+    }
   },
-  created() {  
+  created() {
     this.$Progress.start();
     this.anArray = [
       {
