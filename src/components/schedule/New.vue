@@ -17,6 +17,7 @@
           </div>
         </div>
   
+        <!--日付-->
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">schedule</i>
@@ -26,21 +27,24 @@
             <label for="datepicker"></label>
           </div>
         </div>
-
+        
+        <!--時間-->
         <div class="row">
+          <!--開始時間-->
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
             <input v-model="startTime"
                    id="time_start"
-                   type="text">
+                   type="text" class="timepicker">
             <label for="time_start"
-                   v-if="!startTime">開始時間</label>
+                   v-if="startTime">開始時間</label>
           </div>
+          <!--終了時間-->
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
             <input v-model="endTime"
                    id="time_end"
-                   type="text">
+                   type="text" class="timepicker">
             <label for="time_end"
                    v-if="!endTime">終了時間</label>
           </div>
@@ -93,14 +97,32 @@ export default {
     }
   },
   mounted() {
+    // https://github.com/Dogfalo/materialize/wiki/Date-Picker
     $('.datepicker').pickadate({
       selectMonths: true,
       today: true,
       selectYears: 15,
       format: 'yyyy/mm/dd',
       formatSubmit: 'yyyy/mm/dd',
+      monthsFull: ['１月', '２月', '３月', '４月', '５月', '６月', '７月', '８月', '９月', '１０月', '１１月', '１２月'],
+      monthsShort: ['1 /', '2 /', '3 /', '4 /', '5 /', '6 /', '7 /', '8 /', '9 /', '10 /', '11 /', '12 /'],
+      weekdaysFull: [ '日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜' ],
+      weekdaysShort: [ '日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜' ],
+      weekdaysLetter: [ '日', '月', '火', '水', '木', '金', '土' ],
       closeOnSelect: true
     });
+    $('.timepicker').pickatime({
+      // default: 'now', // Set default time
+      // fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+      twelvehour: false, // Use AM/PM or 24-hour format
+      donetext: 'OK', // text for done-button
+      cleartext: 'Clear', // text for clear-button
+      canceltext: 'Cancel', // Text for cancel-button
+      autoclose: true, // automatic close timepicker
+      ampmclickable: true, // make AM PM clickable
+      aftershow: function(){} //Function for after opening timepicker  
+    });
+       
   },
   methods: {
     addItem: function () {
