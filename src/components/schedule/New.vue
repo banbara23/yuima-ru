@@ -37,7 +37,7 @@
                    id="time_start"
                    type="text" class="timepicker">
             <label for="time_start"
-                   v-if="startTime">開始時間</label>
+                   v-if="!startTime">開始時間</label>
           </div>
           <!--終了時間-->
           <div class="input-field col s6">
@@ -100,7 +100,7 @@ export default {
     // https://github.com/Dogfalo/materialize/wiki/Date-Picker
     $('.datepicker').pickadate({
       selectMonths: true,
-      today: true,
+      // today: true,
       selectYears: 15,
       format: 'yyyy/mm/dd',
       formatSubmit: 'yyyy/mm/dd',
