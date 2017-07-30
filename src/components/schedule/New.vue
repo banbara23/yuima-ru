@@ -8,69 +8,48 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
-            <input v-model="title"
-                   id="title"
-                   type="text"
-                   class="validate">
-            <label for="title"
-                   v-if="!title">タイトル</label>
+            <input v-model="title" id="title" type="text" class="validate">
+            <label for="title" v-if="!title">タイトル</label>
           </div>
         </div>
   
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">schedule</i>
-            <input v-model="date"
-                   type="date"
-                   class="datepicker">
+            <input v-model="date" type="date" class="datepicker">
             <label for="datepicker"></label>
           </div>
         </div>
-
+  
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
-            <input v-model="startTime"
-                   id="time_start"
-                   type="text">
-            <label for="time_start"
-                   v-if="!startTime">開始時間</label>
+            <input v-model="startTime" id="time_start" type="text">
+            <label for="time_start" v-if="!startTime">開始時間</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
-            <input v-model="endTime"
-                   id="time_end"
-                   type="text">
-            <label for="time_end"
-                   v-if="!endTime">終了時間</label>
+            <input v-model="endTime" id="time_end" type="text">
+            <label for="time_end" v-if="!endTime">終了時間</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">room</i>
-            <input v-model="place"
-                   id="place"
-                   type="text">
-            <label for="place"
-                   v-if="!place">施設</label>
+            <input v-model="place" id="place" type="text">
+            <label for="place" v-if="!place">施設</label>
           </div>
   
           <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
-            <textarea v-model="comment"
-                      id="comment"
-                      class="materialize-textarea"></textarea>
-            <label for="comment"
-                   v-if="!comment">コメント</label>
+            <textarea v-model="comment" id="comment" class="materialize-textarea"></textarea>
+            <label for="comment" v-if="!comment">コメント</label>
           </div>
         </div>
       </form>
   
       <!--登録ボタン-->
-      <button @click="addItem"
-              class="btn waves-effect waves-light"
-              type="submit"
-              name="action">
+      <button @click="addItem" class="btn waves-effect waves-light" type="submit" name="action">
         登録
         <i class="material-icons right">send</i>
       </button>
@@ -105,9 +84,9 @@ export default {
   methods: {
     addItem: function () {
 
-      const id = this.date.replace('/','').replace('/','')
+      const id = this.date.replace('/', '').replace('/', '')
       const sendData = {
-        id:id,
+        id: id,
         date: this.date,
         title: this.title,
         date: this.date,
@@ -116,8 +95,8 @@ export default {
         comment: this.comment
       }
       firebase.database()
-        .ref(`/schedule/${id}`)
-        .set(sendData)
+        .ref('schedule')
+        .push(sendData)
         .then(this.$router.push('/schedule'))
     }
   }

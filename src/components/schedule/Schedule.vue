@@ -2,16 +2,14 @@
   <div class="schedule-list">
     <vue-progress-bar></vue-progress-bar>
     <h2>出席登録</h2>
-    <div class="row"
-         id="schedule">
-      <div class="col s12"
-           v-for="events in anArray">
-        <router-link :to="`schedule/${events.id}`">
+    <div class="row" id="schedule">
+      <div class="col s12" v-for="events in anArray" v-bind:key="events.id">
+        <router-link :to="'schedule/'+events.id">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">
-                  {{ events.date }} {{ events.title }}
-                </span>
+                {{ events.date }} {{ events.title }}
+              </span>
               <p>{{ events.comment }}</p>
             </div>
           </div>
@@ -20,9 +18,7 @@
     </div>
     <div class="row">
       <div class="col s12">
-        <router-link to="schedule/new"
-                     class="waves-effect waves-light btn"
-                     @click="add">
+        <router-link to="schedule/new" class="waves-effect waves-light btn" @click="add">
           <i class="material-icons left">add</i>New</router-link>
       </div>
     </div>
@@ -41,7 +37,7 @@ export default {
       anArray: []
     }
   },
-  created() {  
+  created() {
     this.$Progress.start()
     // this.anArray = [
     //   {
@@ -58,9 +54,9 @@ export default {
     //   }
     // ]
   },
- firebase: {
+  firebase: {
     anArray: {
-      source: db.ref("/schedule"),
+      source: db.ref("/schedule").orderByChild('date'),
       readyCallback: function () {
         this.$Progress.finish()
       }
