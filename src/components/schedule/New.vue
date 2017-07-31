@@ -1,6 +1,6 @@
 <template>
   <div>
-  
+  {{date}}
     <div id="member-insert">
       <h5>予定登録</h5>
       <form class="col scv gv12">
@@ -17,7 +17,8 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">schedule</i>
-            <input v-model="date" type="date" class="datepicker">
+            <!-- <input v-model="date" type="text" class="datepicker"> -->
+            <input v-model="date" type="text">
             <label for="datepicker"></label>
           </div>
         </div>
@@ -76,7 +77,7 @@ export default {
   data() {
     return {
       title: '練習',
-      date: '',
+      date: '2017/08/01',
       startTime: '10:00',
       endTime: '14:00',
       place: '練馬春日町小学校',
