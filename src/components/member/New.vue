@@ -4,7 +4,6 @@
   <div id="member-insert">
     <h2>メンバー登録</h2>
     <form>
-
       <!--名前-->
       <div class="row">
         <div class="input-field col s8">
@@ -26,7 +25,7 @@
       <div class="row">
         <div class="input-field col s8">
           <i class="material-icons prefix">mode_edit</i>
-          <input v-model="name" id="position" type="text" class="validate">
+          <input v-model="position" id="position" type="text" class="validate">
           <label class="active" for="name">ポジション</label>
         </div>
       </div>
@@ -51,17 +50,27 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
   data() {
     return {
-      msg: 'member',
-      anArray: []
+      name: 'sample',
+      position: 'all',
+      comment: 'test'
     }
   },
   methods: {
     // 登録を押下
     addItem:function () {
-      this.$router.push('/member');
+      const sendData = {
+        name: this.name,
+        position: this.position,
+        comment: this.comment
+      }
+      firebase.database()
+        .ref('member')
+        .push(sendData)
+        .then(this.$router.push('/member'))
     }
   }
 }
