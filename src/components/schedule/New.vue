@@ -37,7 +37,7 @@
           <div class="input-field col s12">
             <i class="material-icons prefix">room</i>
             <input v-model="place" id="place" type="text">
-            <label for="place" v-if="!place">施設</label>
+            <label for="place" v-if="!place">場所</label>
           </div>
   
           <div class="input-field col s12">
@@ -59,12 +59,14 @@
 
 <script>
 import firebase from 'firebase'
+import moment from 'moment'
+moment.locale('ja')
 
 export default {
   data() {
     return {
       title: '練習',
-      date: '2017/06/22',
+      date: '',
       startTime: '10:00',
       endTime: '14:00',
       place: '練馬春日町小学校',
@@ -74,11 +76,15 @@ export default {
   mounted() {
     $('.datepicker').pickadate({
       selectMonths: true,
-      today: true,
+      today: '本日',
+      clear: 'クリア',
+      close: '閉じる',
       selectYears: 15,
       format: 'yyyy/mm/dd',
       formatSubmit: 'yyyy/mm/dd',
-      closeOnSelect: true
+      onSet: function(context) {
+          console.log('Just set stuff:', context)
+        }
     });
   },
   methods: {
@@ -92,6 +98,7 @@ export default {
         date: this.date,
         startTime: this.startTime,
         endTime: this.endTime,
+        place: this.place,
         comment: this.comment
       }
       firebase.database()
