@@ -5,10 +5,10 @@
     <h2>予定詳細</h2>
     <div class="row card">
       <div class="card-content">
-        <span class="card-title">練習</span>
-        <p>日時：2017/05/20 10〜14時</p>
-        <p>場所：練馬春日小学校</p>
-        <p>コメント：今回はたくさんくるぞー</p>
+        <span class="card-title">{{detail.title}}</span>
+        <p>日時：{{detail.date}} {{detail.startTime}}〜{{detail.endTime}}</p>
+        <p>場所：{{detail.place}}</p>
+        <p>コメント：{{detail.comment}}</p>
         <!--<button @click="goEdit"
                     class="btn waves-effect waves-light"
                     type="submit"
@@ -41,7 +41,8 @@
     <div class="row">
       <ul class="collection card">
         <li class="collection-item avatar"
-            v-for="item in anArray">
+            v-for="item in anArray"
+            v-bind:key="item.id">
           <!--<img v-if="item.image"
                        :src="item.image"
                        alt=""
@@ -82,12 +83,20 @@ export default {
   firebase() {
     return {
       detail: {
-        source: db.ref("/schedule")
+        source: db.ref("/schedule/")
           .child(this.$route.params.id),
         asObject: true,
         readyCallback: function () {
           this.$Progress.finish();
         }
+      }
+    }
+  },
+  firebase: {
+    anArray: {
+      source: db.ref("/member"),
+      readyCallback: function () {
+        this.$Progress.finish()
       }
     }
   },
