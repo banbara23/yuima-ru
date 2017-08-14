@@ -1,7 +1,6 @@
 <template>
   <div class="detail">
     <!-- {{detail}} {{member}}  -->
-    {{val}}
     <vue-progress-bar></vue-progress-bar>
     <!--情報-->
     <h3>予定詳細</h3>
@@ -51,12 +50,31 @@
           <span class="title">{{member.name}}</span>
           <p>{{member.comment}}</p>
           <div class="secondary-content">
-            <router-link class="blue waves-effect waves-light btn" to="/schedule/entry/1">参加</router-link>
+            <!-- <router-link class="blue waves-effect waves-light btn" to="/schedule/entry/1">参加</router-link> -->
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1" @click="setModalMember(member)">解答</a>
+
           </div>
         </li>
       </ul>
     </div>
   
+ <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h3>{{modalMember.name}}</h3>
+      <div class="row">
+      <button class="btn waves-effect waves-light left">参加</button>
+      <button class="btn waves-effect waves-light center">未定</button>
+      <button class="btn waves-effect waves-light light">欠席</button>
+      </div>
+      <p>{{modalMember}}</p>
+    </div>
+    <div class="modal-footer">
+      <button @click="modalClose" class="btn modal-close waves-effect waves-light">登録</button>
+      <button @click="modalClose" class="btn-flat modal-close waves-effect waves-light">閉じる</button>
+    </div>
+  </div>
+
     <!--登録ボタン-->
     <button @click="goScheduleTop" class="btn waves-effect waves-light" type="submit" name="action">
       スケジュールトップ
@@ -75,7 +93,8 @@ export default {
       title: 'スケジュール詳細',
       detail: {},
       members: [],
-      val: null
+      val: null,
+      modalMember: {}
     }
   },
   created() {
@@ -108,6 +127,12 @@ export default {
       console.log("call!!!")
     }
   },
+  mounted() {
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+  },
   methods: {
  
     goScheduleTop: function () {
@@ -115,6 +140,12 @@ export default {
     },
     goEdit: function () {
       this.$router.push('/schedule/New');
+    },
+    setModalMember(member) {
+      this.modalMember = member;
+    },
+    modalClose: function() {
+      $('#modal1').modal('close');
     }
   }
 }
