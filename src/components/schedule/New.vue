@@ -1,6 +1,6 @@
 <template>
   <div>
-  {{date}}
+    {{date}}
     <div id="member-insert">
       <h5>予定登録</h5>
       <form class="col scv gv12">
@@ -22,26 +22,20 @@
             <label for="datepicker"></label>
           </div>
         </div>
-        
+  
         <!--時間-->
         <div class="row">
           <!--開始時間-->
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
-            <input v-model="startTime"
-                   id="time_start"
-                   type="text" class="timepicker">
-            <label for="time_start"
-                   v-if="!startTime">開始時間</label>
+            <input v-model="startTime" id="time_start" type="text" class="timepicker">
+            <label for="time_start" v-if="!startTime">開始時間</label>
           </div>
           <!--終了時間-->
           <div class="input-field col s6">
             <i class="material-icons prefix">av_timer</i>
-            <input v-model="endTime"
-                   id="time_end"
-                   type="text" class="timepicker">
-            <label for="time_end"
-                   v-if="!endTime">終了時間</label>
+            <input v-model="endTime" id="time_end" type="text" class="timepicker">
+            <label for="time_end" v-if="!endTime">終了時間</label>
           </div>
         </div>
         <div class="row">
@@ -103,9 +97,9 @@ export default {
       formatSubmit: 'yyyy/mm/dd',
       monthsFull: ['１月', '２月', '３月', '４月', '５月', '６月', '７月', '８月', '９月', '１０月', '１１月', '１２月'],
       monthsShort: ['1 /', '2 /', '3 /', '4 /', '5 /', '6 /', '7 /', '8 /', '9 /', '10 /', '11 /', '12 /'],
-      weekdaysFull: [ '日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜' ],
-      weekdaysShort: [ '日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜' ],
-      weekdaysLetter: [ '日', '月', '火', '水', '木', '金', '土' ],
+      weekdaysFull: ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'],
+      weekdaysShort: ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'],
+      weekdaysLetter: ['日', '月', '火', '水', '木', '金', '土'],
       closeOnSelect: true
     });
     $('.timepicker').pickatime({
@@ -117,9 +111,8 @@ export default {
       canceltext: 'Cancel', // Text for cancel-button
       autoclose: true, // automatic close timepicker
       ampmclickable: true, // make AM PM clickable
-      aftershow: function(){} //Function for after opening timepicker  
+      aftershow: function () { } //Function for after opening timepicker  
     });
-       
   },
   methods: {
     addItem: function () {
@@ -135,9 +128,19 @@ export default {
         place: this.place,
         comment: this.comment
       }
-      firebase.database()
-        .ref('schedule')
-        .push(sendData)
+
+      const db = firebase.database();
+      const scheduleRef = db.ref('schedule');
+      const memberRef = db.ref('member');
+
+      // スケジュールにpush登録
+      const newRef = scheduleRef.push(sendData);
+      const entryRef = db.ref('entry/' + newRef.key);
+
+      //メンバーを取得、entryにset登録、一覧に遷移
+      memberRef.once('value')
+        .then(dataSnapshot => dataSnapshot.val())
+        .then(member => db.ref('entry/' + newRef.key).set(member))
         .then(this.$router.push('/schedule'))
     }
   }
