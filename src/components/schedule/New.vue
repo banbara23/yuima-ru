@@ -1,8 +1,7 @@
 <template>
   <div>
-    {{date}}
     <div id="member-insert">
-      <h5>予定登録</h5>
+      <h4>予定 新規登録</h4>
       <form class="col scv gv12">
   
         <div class="row">

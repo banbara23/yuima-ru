@@ -1,8 +1,6 @@
 <template>
   <div class="detail">
-    <!-- {{detail}} {{member}}  -->
     <vue-progress-bar></vue-progress-bar>
-    <!--情報-->
     <h3>予定詳細</h3>
     <div class="row card" v-if="detail">
       <div class="card-content">
@@ -11,9 +9,6 @@
         <p>場所：{{detail.place}}</p>
         <p>コメント：{{detail.comment}}</p>
       </div>
-      <!-- <div class="card-action"> -->
-      <!-- <router-link to="/schedule/New">修正</router-link> -->
-      <!-- </div> -->
     </div>
   
     <!--まとめ数字-->
@@ -34,17 +29,16 @@
   
     <!--リスト-->
     <div class="row">
-      <ul class="collection card" v-if="members">
-        <li class="collection-item avatar" v-for="member in members" v-bind:key="member['key']">
+      <ul class="collection card" v-if="entryMember">
+        <li class="collection-item avatar" v-for="member in entryMember" v-bind:key="member['key']">
           <!--<img v-if="item.image"
-                                    :src="item.image"
-                                    alt=""
-                                    class="circle">-->
+                          :src="item.image"
+                          alt=""
+                          class="circle">-->
           <i class="material-icons circle ">perm_identity</i>
           <span class="title">{{member.name}}</span>
-          <p>{{member.comment}}</p>
+          <p>{{member.entryComment}}</p>
           <div class="secondary-content">
-            <!-- <router-link class="blue waves-effect waves-light btn" to="/schedule/entry/1">参加</router-link> -->
             <a class="waves-effect waves-light btn modal-trigger" href="#modal1" @click="setModalMember(member)">出欠登録</a>
   
           </div>
@@ -62,19 +56,19 @@
         <h4>{{modalMember.name}}の出欠</h4>
         <div class="row">
           <div class="col s4">
-            <button class="btn-large waves-effect waves-light">
+            <button class="btn-large waves-effect waves-light teal">
               <i class="material-icons left">panorama_fish_eye</i>
               参加
             </button>
           </div>
           <div class="col s4">
-            <button class="btn-large waves-effect waves-light">
+            <button class="btn-large waves-effect waves-light teal lighten-5 black-text">
               <i class="material-icons left">report_problem</i>
               未定
             </button>
           </div>
           <div class="col s4">
-            <button class="btn-large waves-effect waves-light">
+            <button class="btn-large waves-effect waves-light teal lighten-5  black-text">
               <i class="material-icons left">close</i>
               欠席</button>
           </div>
@@ -84,15 +78,14 @@
           <input v-model="comment" id="comment" type="text" class="validate">
           <label for="comment">コメント</label>
         </div>
-        <!-- <p>{{modalMember}}</p> -->
       </div>
       <div class="modal-footer">
-        <button @click="modalClose" class="modal-action modal-close btn-flat waves-effect waves-light">登録</button>
         <button @click="modalClose" class="modal-action modal-close btn-flat waves-effect waves-light">閉じる</button>
+        <button @click="modalClose" class="modal-action modal-close btn pink waves-effect waves-light">登録</button>
       </div>
     </div>
   
-    <!--登録ボタン-->
+    <!--戻るボタン-->
     <button @click="goScheduleTop" class="btn waves-effect waves-light" type="submit" name="action">
       一覧に戻る
     </button>
@@ -109,8 +102,7 @@ export default {
     return {
       title: 'スケジュール詳細',
       detail: {},
-      members: [],
-      val: null,
+      entryMember: [],
       modalMember: {}
     }
   },
@@ -119,34 +111,22 @@ export default {
   },
   firebase() {
     return {
-      members: {
-        source: db.ref("/member"),
-        readyCallback: function (data) {
-          if (detail.schedule != undefined) {
-
-            // 回答済みの予定を組み立てる処理
-          }
-          this.val = data
-          this.$Progress.finish()
-        }
-      },
       detail: {
         source: db.ref("schedule").child(this.$route.params.id),
         asObject: true,
-        readyCallback: function () {
+        readyCallback: function (data) {
+          // entryテーブルのメンバー出欠情報を取ってくる
+          db.ref('entry/' + data.key).once('value')
+            .then(dataSnapshot => dataSnapshot.val())
+            .then(entry => this.entryMember = entry)
+
           this.$Progress.finish()
         }
       }
     }
   },
-  computed: {
-    test: function () {
-      console.log("call!!!")
-    }
-  },
   mounted() {
     $(document).ready(function () {
-      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
     });
   },
