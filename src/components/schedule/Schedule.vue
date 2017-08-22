@@ -4,7 +4,7 @@
     <h2>出席登録</h2>
     <div class="row" id="schedule">
       <div class="col s12" v-for="event in anArray" v-bind:key="event.key">
-
+  
         <router-link :to="'schedule/'+event['.key']">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
@@ -28,7 +28,9 @@
 
 <script>
 import firebase from 'firebase'
-const db = firebase.database()
+const db = firebase.database();
+const format = require('date-fns/format')
+const now = format(new Date(), 'YYYYMMDD')
 
 export default {
   name: 'schedule-list',
@@ -40,24 +42,10 @@ export default {
   },
   created() {
     this.$Progress.start()
-    // this.anArray = [
-    //   {
-    //     date: '2017/05/17 (日)',
-    //     title: '春日町で練習',
-    //     comment: 'いつもの練習',
-    //     id: 'schedule/20170617'
-    //   },
-    //   {
-    //     date: '2017/05/18 (日）',
-    //     title: '春日町で練習',
-    //     comment: 'チャラ座と練習試合かも',
-    //     id: 'schedule/20170617'
-    //   }
-    // ]
   },
   firebase: {
     anArray: {
-      source: db.ref("/schedule").orderByChild('date'),
+      source: db.ref("/schedule").orderByChild('id').startAt(now),
       readyCallback: function () {
         this.$Progress.finish()
       }
