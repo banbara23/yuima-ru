@@ -1,27 +1,23 @@
 <template>
   <div class="member">
-    
+  
     <div class="section" v-cloak>
       <h2>メンバー</h2>
-      <p>We are a team of professional from Volly Ball</p>
-
+  
       <!-- <div class="s12 center">
-        <div class="image-container">
-          <img class="responsive-img" src="../../assets/member_all.jpg" style="width:100%;">
-        </div>
-      </div> -->
-      
+          <div class="image-container">
+            <img class="responsive-img" src="../../assets/member_all.jpg" style="width:100%;">
+          </div>
+        </div> -->
+  
       <ul class="collection">
-        <li class="collection-item avatar" 
-          v-for="member in members" 
-          v-bind:key="member['key']">
-
+        <li class="collection-item avatar" v-for="member in members" v-bind:key="member['key']">
+  
           <img src="../../assets/alvin.png" alt="" class="circle">
           <span class="title">{{member.name}}</span>
-          <p>{{member.position}} <br>
-              {{member.comment}}
+          <p>ポジション：{{member.position}}
+            <br> {{member.comment}}
           </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
         </li>
       </ul>
     </div>
