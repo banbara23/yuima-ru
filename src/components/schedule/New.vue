@@ -64,8 +64,6 @@
 
 <script>
 import firebase from 'firebase'
-import moment from 'moment'
-moment.locale('ja')
 
 export default {
   data() {
