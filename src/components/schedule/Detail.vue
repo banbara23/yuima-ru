@@ -33,7 +33,7 @@
         <li class="collection-item avatar" v-for="member in members" v-bind:key="member['.key']">
           <i class="material-icons circle ">perm_identity</i>
           <span class="title">{{member.name}}</span>
-          <p>{{member.entry}} {{member.entryComment}}</p>
+          <p>{{member.entryComment}}</p>
           <div class="secondary-content">
             <a v-if="member.entry=='OK'" class="waves-effect waves-light btn-flat blue white-text modal-trigger" href="#modal1" @click="modalMember = member">参加</a>
             <a v-else-if="member.entry==='NG'" class="waves-effect waves-light btn-flat red white-text modal-trigger" href="#modal1" @click="modalMember = member">欠席</a>
