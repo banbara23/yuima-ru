@@ -48,28 +48,31 @@
     <div id="modal1" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4>出欠登録</h4>
-        {{entry}} {{entryComment}}
-        <p>{{schedule.title}} in {{schedule.place}}</p>
-        <p>{{schedule.date}} {{schedule.startTime}}〜{{schedule.endTime}}</p>
+        {{entryComment}}
+        <span>{{schedule.title}} in {{schedule.place}}</span><br>
+        <span>{{schedule.date}} {{schedule.startTime}}〜{{schedule.endTime}}</span>
         <p></p>
-        <h4>{{modalMember.name}}の出欠</h4>
+        <h5>{{modalMember.name}}</h5>
+        <h5>{{entry}}</h5>
+        <br>
         <div class="row">
           <div class="col s4">
-            <button @click="entry = 'OK'" class="btn-large waves-effect waves-light teal">
+            <button @click="entry = 'OK'" class="btn-floating btn-large waves-effect waves-light blue">
               <i class="material-icons left">panorama_fish_eye</i>
-              参加
             </button>
+            <span>参加</span>
           </div>
           <div class="col s4">
-            <button @click="entry = 'TBD'" class="btn-large waves-effect waves-light teal lighten-5 black-text">
+            <button @click="entry = 'TBD'" class="btn-floating btn-large waves-effect waves-light orange lighten-5">
               <i class="material-icons left">report_problem</i>
-              未定
             </button>
+            <span>未定</span>
           </div>
           <div class="col s4">
-            <button @click="entry = 'NG'" class="btn-large waves-effect waves-light teal lighten-5  black-text">
+            <button @click="entry = 'NG'" class="btn-floating btn-large waves-effect waves-light red lighten-5">
               <i class="material-icons left">close</i>
-              欠席</button>
+            </button>
+            <span>欠席</span>
           </div>
         </div>
         <div class="input-field col s12">
@@ -152,6 +155,9 @@ export default {
   mounted() {
     $(document).ready(function() {
       $('.modal').modal();
+    });
+    $(document).ready(function() {
+      $('select').material_select();
     });
   },
   methods: {
