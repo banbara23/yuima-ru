@@ -37,7 +37,7 @@
           <div class="secondary-content">
             <a v-if="member.entry=='OK'" class="waves-effect waves-light btn-flat blue white-text modal-trigger" href="#modal1" @click="modalMember = member">参加</a>
             <a v-else-if="member.entry==='NG'" class="waves-effect waves-light btn-flat red white-text modal-trigger" href="#modal1" @click="modalMember = member">欠席</a>
-            <a v-else-if="member.entry==='TBD'" class="waves-effect waves-light btn-flat orange-text modal-trigger" href="#modal1" @click="modalMember = member">未定</a>
+            <a v-else-if="member.entry==='TBD'" class="waves-effect waves-light btn-flat orange white-text modal-trigger" href="#modal1" @click="modalMember = member">未定</a>
             <a v-else class="waves-effect waves-light btn-flat gray-text modal-trigger" href="#modal1" @click="modalMember = member">未回答</a>
           </div>
         </li>
