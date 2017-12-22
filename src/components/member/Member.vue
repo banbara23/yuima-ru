@@ -12,8 +12,8 @@
   
       <ul class="collection">
         <li class="collection-item avatar" v-for="member in members" v-bind:key="member['key']">
-  
-          <img src="../../assets/alvin.png" alt="" class="circle">
+          <i class="material-icons circle ">perm_identity</i>
+          <!-- <img src="../../assets/alvin.png" alt="" class="circle"> -->
           <span class="title">{{member.name}}</span>
           <p>ポジション：{{member.position}}
             <br> {{member.comment}}
