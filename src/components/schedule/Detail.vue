@@ -183,7 +183,30 @@ export default {
         .ref("entry")
         .child(this.$route.params.id)
         .child(this.modalMember[".key"])
-        .set(sendData);
+        .set(sendData, () => {})
+        .then(() => {
+          // 件数を計算したい
+          // console.log(this.$data.entry);
+          // console.log($data.entry);
+          // console.log(this.entry);
+          // switch (this.$data.entry) {
+          //   case "OK":
+          //     console.log("OK");
+          //     console.log(this.$data.OK);
+          //     console.log(this.OK);
+          //     // this.$data.OK++;
+          //     this.OK = 0;
+          //     break;
+          //   case "NG":
+          //     this.$data.NG++;
+          //     break;
+          //   case "TBD":
+          //     this.$data.TBD++;
+          //     break;
+          //   default:
+          //     break;
+          // }
+        });
 
       // 初期化
       this.modalMember = {};
