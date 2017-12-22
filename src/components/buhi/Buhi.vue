@@ -7,11 +7,11 @@
 
 <script>
 export default {
-  name: 'buhi',
+  name: "buhi",
   data() {
     return {
       many: 1000000000
-    }
+    };
   }
-}
+};
 </script>

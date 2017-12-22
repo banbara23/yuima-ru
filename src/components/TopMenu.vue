@@ -47,11 +47,11 @@
 
 <script>
 export default {
-  name: 'menu',
+  name: "menu",
   data() {
     return {
-      msg: 'Welcome to ゆいま〜る'
-    }
+      msg: "Welcome to ゆいま〜る"
+    };
   }
-}
+};
 </script>

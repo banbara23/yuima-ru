@@ -92,23 +92,23 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-const db = firebase.database()
+import firebase from "firebase";
+const db = firebase.database();
 
 export default {
-  name: 'name',
+  name: "name",
   data() {
     return {
-      title: 'スケジュール詳細',
+      title: "スケジュール詳細",
       schedule: {},
       members: [],
       modalMember: {},
-      entry: '',
-      entryComment: '',
+      entry: "",
+      entryComment: "",
       OK: 0,
       NG: 0,
-      TBD: 0,
-    }
+      TBD: 0
+    };
   },
   created() {
     this.$Progress.start();
@@ -118,8 +118,7 @@ export default {
       schedule: {
         source: db.ref("schedule").child(this.$route.params.id),
         asObject: true,
-        readyCallback: function(data) {
-        }
+        readyCallback: function(data) {}
       },
       members: {
         source: db.ref("entry").child(this.$route.params.id),
@@ -130,42 +129,41 @@ export default {
           for (let k of Object.keys(members)) {
             // console.log(members[k].entry);
             switch (members[k].entry) {
-              case 'OK':
-                this.OK++
+              case "OK":
+                this.OK++;
                 break;
-              case 'NG':
-                this.NG++
+              case "NG":
+                this.NG++;
                 break;
-              case 'TBD':
-                this.TBD++
+              case "TBD":
+                this.TBD++;
                 break;
               default:
                 break;
             }
           }
 
-          this.$Progress.finish()
+          this.$Progress.finish();
         }
       }
-    }
+    };
   },
   mounted() {
     $(document).ready(function() {
-      $('.modal').modal();
+      $(".modal").modal();
     });
   },
   methods: {
-
     goScheduleTop: function() {
-      this.$router.push('/schedule');
+      this.$router.push("/schedule");
     },
     goEdit: function() {
-      this.$router.push('/schedule/New');
+      this.$router.push("/schedule/New");
     },
     modalClose: function() {
-      $('#modal1').modal('close');
-      this.entry = ''
-      this.entryComment = '';
+      $("#modal1").modal("close");
+      this.entry = "";
+      this.entryComment = "";
     },
     sendEntry: function() {
       // 登録準備
@@ -174,17 +172,21 @@ export default {
         image: this.modalMember.image,
         entry: this.entry,
         entryComment: this.entryComment
-      }
+      };
 
       // 登録
-      db.ref("entry").child(this.$route.params.id).child(this.modalMember['.key']).set(sendData)
+      db
+        .ref("entry")
+        .child(this.$route.params.id)
+        .child(this.modalMember[".key"])
+        .set(sendData);
 
       // 初期化
       this.modalMember = {};
-      this.entry = ''
-      this.entryComment = '';
-      $('#modal1').modal('close');
-    },
+      this.entry = "";
+      this.entryComment = "";
+      $("#modal1").modal("close");
+    }
   }
-}
+};
 </script>

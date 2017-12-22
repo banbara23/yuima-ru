@@ -29,29 +29,29 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-const db = firebase.database()
+import firebase from "firebase";
+const db = firebase.database();
 
 export default {
-  name: 'member',
+  name: "member",
   data() {
     return {
-      msg: 'member',
+      msg: "member",
       members: []
-    }
+    };
   },
   firebase: {
     members: {
       source: db.ref("/member"),
-      readyCallback: function () {
-        this.$Progress.finish()
+      readyCallback: function() {
+        this.$Progress.finish();
       }
     }
   },
   created() {
-    this.$Progress.start()
+    this.$Progress.start();
   }
-}
+};
 </script>
 
 <style>

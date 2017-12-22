@@ -41,5 +41,5 @@ export default {
       closeOnClick: true
     });
   }
-}
+};
 </script>

@@ -60,30 +60,31 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 export default {
   data() {
     return {
-      name: 'sample',
-      position: 'all',
-      image: '',
-      comment: 'test'
-    }
+      name: "sample",
+      position: "all",
+      image: "",
+      comment: "test"
+    };
   },
   methods: {
     // 登録を押下
-    addItem: function () {
+    addItem: function() {
       const sendData = {
         name: this.name,
         position: this.position,
         image: this.image,
         comment: this.comment
-      }
-      firebase.database()
-        .ref('member')
+      };
+      firebase
+        .database()
+        .ref("member")
         .push(sendData)
-        .then(this.$router.push('/member'))
+        .then(this.$router.push("/member"));
     }
   }
-}
+};
 </script>

@@ -14,15 +14,15 @@ export default {
   data() {
     return {
       title: "メンバー詳細"
-    }
+    };
   },
-  created () {
+  created() {
     // this.title = $route.params.id;
     if (!$route.params.id) {
-      this.title = $route.params.id
+      this.title = $route.params.id;
     }
   }
-}
+};
 </script>
 
 <style>

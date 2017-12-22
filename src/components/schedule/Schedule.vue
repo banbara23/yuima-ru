@@ -27,34 +27,35 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 const db = firebase.database();
-const format = require('date-fns/format')
-const now = format(new Date(), 'YYYYMMDD')
+const format = require("date-fns/format");
+const now = format(new Date(), "YYYYMMDD");
 
 export default {
-  name: 'schedule-list',
+  name: "schedule-list",
   data() {
     return {
-      msg: 'test',
+      msg: "test",
       anArray: []
-    }
+    };
   },
   created() {
-    this.$Progress.start()
+    this.$Progress.start();
   },
   firebase: {
     anArray: {
-      source: db.ref("/schedule").orderByChild('id').startAt(now),
-      readyCallback: function () {
-        this.$Progress.finish()
+      source: db
+        .ref("/schedule")
+        .orderByChild("id")
+        .startAt(now),
+      readyCallback: function() {
+        this.$Progress.finish();
       }
     }
   },
   methods: {
-    add: () => {
-
-    }
+    add: () => {}
   }
-}
+};
 </script>

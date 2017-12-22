@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import TopMenu from '@/components/TopMenu'
+import TopMenu from "@/components/TopMenu";
 export default {
-  name: 'index',
+  name: "index",
   components: {
     TopMenu: TopMenu
   }
-}
+};
 </script>

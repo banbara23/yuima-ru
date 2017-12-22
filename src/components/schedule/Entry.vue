@@ -48,13 +48,13 @@
 
 <script>
 export default {
-  name: 'entry',
+  name: "entry",
   methods: {
-    addItem: function () {
-      this.$router.push('/schedule/20170617');
+    addItem: function() {
+      this.$router.push("/schedule/20170617");
     }
   }
-}
+};
 </script>
 
 <style>
