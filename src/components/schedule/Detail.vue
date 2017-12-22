@@ -55,21 +55,21 @@
         <h4>{{modalMember.name}}の出欠</h4>
         <div class="row">
           <div class="col s4">
-            <button @click="entry = 'OK'" class="btn-large waves-effect waves-light teal">
+            <button @click="entry = 'OK'" :class="getModalSutatusButtonClass('blue',entry == 'OK')">
               <i class="material-icons left">panorama_fish_eye</i>
               参加
             </button>
           </div>
           <div class="col s4">
-            <button @click="entry = 'TBD'" class="btn-large waves-effect waves-light teal lighten-5 black-text">
+            <button @click="entry = 'NG'" :class="getModalSutatusButtonClass('red',entry == 'NG')">
+              <i class="material-icons left">close</i>
+              欠席</button>
+          </div>
+          <div class="col s4">
+            <button @click="entry = 'TBD'" :class="getModalSutatusButtonClass('orange',entry == 'TBD')">
               <i class="material-icons left">report_problem</i>
               未定
             </button>
-          </div>
-          <div class="col s4">
-            <button @click="entry = 'NG'" class="btn-large waves-effect waves-light teal lighten-5  black-text">
-              <i class="material-icons left">close</i>
-              欠席</button>
           </div>
         </div>
         <div class="input-field col s12">
@@ -166,6 +166,10 @@ export default {
       this.entryComment = "";
     },
     sendEntry: function() {
+      // 未選択なら登録しない
+      if (!this.entry) {
+        return;
+      }
       // 登録準備
       const sendData = {
         name: this.modalMember.name,
@@ -190,6 +194,12 @@ export default {
     modalOpen: function(member) {
       this.modalMember = member;
       $("#modal1").modal("open");
+    },
+    // モーダルの出欠ボタンの色を設定する
+    getModalSutatusButtonClass: function(color, selected) {
+      return `btn-large waves-effect waves-light ${color} ${selected
+        ? ""
+        : "lighten-5 black-text"}`;
     }
   }
 };
