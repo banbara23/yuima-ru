@@ -33,12 +33,12 @@
         <li id="list" class="collection-item avatar modal-trigger" v-for="member in members" v-bind:key="member['.key']" @click="modalOpen(member)">
           <i class="material-icons circle ">perm_identity</i>
           <span class="title">{{member.name}}</span>
-          <p>{{member.entry}} {{member.entryComment}}</p>
+          <p>{{member.entryComment}}</p>
           <div class="secondary-content">
-            <a v-if="member.entry=='OK'" class="waves-effect waves-light btn-flat blue white-text modal-trigger" href="#modal1" @click="modalMember = member">参加</a>
-            <a v-else-if="member.entry==='NG'" class="waves-effect waves-light btn-flat red white-text modal-trigger" href="#modal1" @click="modalMember = member">欠席</a>
-            <a v-else-if="member.entry==='TBD'" class="waves-effect waves-light btn-flat orange white-text modal-trigger" href="#modal1" @click="modalMember = member">未定</a>
-            <a v-else class="waves-effect waves-light btn-flat gray-text modal-trigger" href="#modal1" @click="modalMember = member">未回答</a>
+            <a v-if="member.entry=='OK'" class="waves-effect waves-light btn-flat blue white-text">参加</a>
+            <a v-else-if="member.entry==='NG'" class="waves-effect waves-light btn-flat red white-text">欠席</a>
+            <a v-else-if="member.entry==='TBD'" class="waves-effect waves-light btn-flat orange white-text">未定</a>
+            <a v-else class="waves-effect waves-light btn-flat gray-text">未回答</a>
           </div>
         </li>
       </ul>
@@ -48,25 +48,25 @@
     <div id="modal1" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4>出欠登録</h4>
-        {{entry}} {{entryComment}}
+        <!-- {{entry}} {{entryComment}} -->
         <p>{{schedule.title}} in {{schedule.place}}</p>
         <p>{{schedule.date}} {{schedule.startTime}}〜{{schedule.endTime}}</p>
         <p></p>
         <h4>{{modalMember.name}}の出欠</h4>
         <div class="row">
           <div class="col s4">
-            <button @click="entry = 'OK'" :class="getModalSutatusButtonClass('blue',entry == 'OK')">
+            <button @click="entry = 'OK'" :class="getModalSutatusButtonClass('blue', entry == 'OK')">
               <i class="material-icons left">panorama_fish_eye</i>
               参加
             </button>
           </div>
           <div class="col s4">
-            <button @click="entry = 'NG'" :class="getModalSutatusButtonClass('red',entry == 'NG')">
+            <button @click="entry = 'NG'" :class="getModalSutatusButtonClass('red', entry == 'NG')">
               <i class="material-icons left">close</i>
               欠席</button>
           </div>
           <div class="col s4">
-            <button @click="entry = 'TBD'" :class="getModalSutatusButtonClass('orange',entry == 'TBD')">
+            <button @click="entry = 'TBD'" :class="getModalSutatusButtonClass('orange', entry == 'TBD')">
               <i class="material-icons left">report_problem</i>
               未定
             </button>
@@ -75,7 +75,7 @@
         <div class="input-field col s12">
           <i class="material-icons prefix">mode_edit</i>
           <input v-model="entryComment" id="comment" type="text" class="validate">
-          <label for="comment">コメント</label>
+          <label for="comment">{{entryComment ? '' : "コメント"}}</label>
         </div>
       </div>
       <div class="modal-footer">
@@ -193,13 +193,17 @@ export default {
     },
     modalOpen: function(member) {
       this.modalMember = member;
+      this.entry = member.entry;
+      this.entryComment = member.entryComment;
+
       $("#modal1").modal("open");
     },
     // モーダルの出欠ボタンの色を設定する
     getModalSutatusButtonClass: function(color, selected) {
-      return `btn-large waves-effect waves-light ${color} ${selected
-        ? ""
-        : "lighten-5 black-text"}`;
+      console.log(this.modalMember.entry);
+      return `btn-large waves-effect waves-light ${selected
+        ? color
+        : "grey lighten-3 black-text"}`;
     }
   }
 };
