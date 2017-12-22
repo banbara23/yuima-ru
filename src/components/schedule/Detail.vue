@@ -175,7 +175,7 @@ export default {
         name: this.modalMember.name,
         image: this.modalMember.image,
         entry: this.entry,
-        entryComment: this.entryComment
+        entryComment: this.entryComment ? this.entryComment : ""
       };
 
       // 登録
@@ -200,7 +200,7 @@ export default {
     },
     // モーダルの出欠ボタンの色を設定する
     getModalSutatusButtonClass: function(color, selected) {
-      console.log(this.modalMember.entry);
+      // console.log(this.modalMember.entry);
       return `btn-large waves-effect waves-light ${selected
         ? color
         : "grey lighten-3 black-text"}`;
