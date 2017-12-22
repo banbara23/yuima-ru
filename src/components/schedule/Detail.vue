@@ -30,7 +30,7 @@
     <!--リスト-->
     <div class="row">
       <ul class="collection card" v-if="members">
-        <li class="collection-item avatar" v-for="member in members" v-bind:key="member['.key']">
+        <li id="list" class="collection-item avatar modal-trigger" v-for="member in members" v-bind:key="member['.key']" @click="modalOpen(member)">
           <i class="material-icons circle ">perm_identity</i>
           <span class="title">{{member.name}}</span>
           <p>{{member.entry}} {{member.entryComment}}</p>
@@ -38,7 +38,7 @@
             <a v-if="member.entry=='OK'" class="waves-effect waves-light btn-flat blue white-text modal-trigger" href="#modal1" @click="modalMember = member">参加</a>
             <a v-else-if="member.entry==='NG'" class="waves-effect waves-light btn-flat red white-text modal-trigger" href="#modal1" @click="modalMember = member">欠席</a>
             <a v-else-if="member.entry==='TBD'" class="waves-effect waves-light btn-flat orange-text modal-trigger" href="#modal1" @click="modalMember = member">未定</a>
-            <a v-else class="waves-effect waves-light btn-flat blue-text modal-trigger" href="#modal1" @click="modalMember = member">回答</a>
+            <a v-else class="waves-effect waves-light btn-flat gray-text modal-trigger" href="#modal1" @click="modalMember = member">未回答</a>
           </div>
         </li>
       </ul>
@@ -186,7 +186,17 @@ export default {
       this.entry = "";
       this.entryComment = "";
       $("#modal1").modal("close");
+    },
+    modalOpen: function(member) {
+      this.modalMember = member;
+      $("#modal1").modal("open");
     }
   }
 };
 </script>
+
+<style scoped>
+li#list {
+  cursor: pointer;
+}
+</style>
