@@ -52,7 +52,7 @@
         <p>{{schedule.title}} in {{schedule.place}}</p>
         <p>{{schedule.date}} {{schedule.startTime}}〜{{schedule.endTime}}</p>
         <p></p>
-        <h5>{{modalMember.name}}</h5>
+        <h4>{{modalMember.name}}の出欠</h4>
         <br>
         <div class="row">
           <div class="col s4">
@@ -150,9 +150,6 @@ export default {
   mounted() {
     $(document).ready(function() {
       $(".modal").modal();
-    });
-    $(document).ready(function() {
-      $("select").material_select();
     });
   },
   methods: {
