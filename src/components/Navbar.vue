@@ -1,37 +1,25 @@
 <template>
-  <nav>
-    <div class="nav-wrapper">
-      <router-link to="/" class="brand-logo center">ゆいま〜る</router-link>
-      <router-link to="#" data-activates="mobile-nav" class="button-collapse">
-        <i class="material-icons">menu</i>
-      </router-link>
-      <ul class="right hide-on-med-and-down">
-        <li>
-          <router-link to="/schedule">出席登録</router-link>
-        </li>
-        <li>
-          <router-link to="/member">メンバー</router-link>
-        </li>
-        <li>
-          <router-link to="/buhi">部費</router-link>
-        </li>
-      </ul>
-      <ul class="side-nav" id="mobile-nav">
-        <li>
-          <router-link to="/">トップ</router-link>
-        </li>
-        <li>
-          <router-link to="/schedule">出席登録</router-link>
-        </li>
-        <li>
-          <router-link to="/member">メンバー</router-link>
-        </li>
-        <li>
-          <router-link to="/buhi">部費</router-link>
-        </li>
-      </ul>
-    </div>
-  </nav>
+ <nav class="paradeiser">
+   <a href="#">
+        <icon class="paradeiser_icon_canvas">
+            <img src="../assets/ic_home.svg" alt="Navigate to Home">
+        </icon>
+        <span>Home</span>
+    </a>
+    <a href="#">
+        <icon class="paradeiser_icon_canvas">
+            <img src="../assets/ic_schedule.svg" alt="Navigate to Schedule">
+        </icon>
+        <span>Schedules</span>
+    </a>
+   <a href="#">
+        <icon class="paradeiser_icon_canvas">
+            <img src="../assets/ic_member.svg" alt="Navigate to Members">
+        </icon>
+        <span>Members</span>
+    </a>
+
+</nav>
 </template>
 <script>
 export default {
