@@ -52,13 +52,13 @@
         <p>{{schedule.title}} in {{schedule.place}}</p>
         <p>{{schedule.date}} {{schedule.startTime}}〜{{schedule.endTime}}</p>
         <p></p>
-        <h4>{{modalMember.name}}の出欠</h4>
+        <h5>{{modalMember.name}}</h5>
+        <br>
         <div class="row">
           <div class="col s4">
             <button @click="entry = 'OK'" :class="getModalSutatusButtonClass('blue', entry == 'OK')">
               <i class="material-icons left">panorama_fish_eye</i>
-              参加
-            </button>
+            参加</button>
           </div>
           <div class="col s4">
             <button @click="entry = 'NG'" :class="getModalSutatusButtonClass('red', entry == 'NG')">
@@ -68,8 +68,7 @@
           <div class="col s4">
             <button @click="entry = 'TBD'" :class="getModalSutatusButtonClass('orange', entry == 'TBD')">
               <i class="material-icons left">report_problem</i>
-              未定
-            </button>
+            未定</button>
           </div>
         </div>
         <div class="input-field col s12">
@@ -151,6 +150,9 @@ export default {
   mounted() {
     $(document).ready(function() {
       $(".modal").modal();
+    });
+    $(document).ready(function() {
+      $("select").material_select();
     });
   },
   methods: {
