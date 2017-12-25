@@ -55,17 +55,17 @@
         <h4>{{modalMember.name}}の出欠</h4>
         <br>
         <div class="row">
-          <div class="col s4">
+          <div class="col m4 s12">
             <button @click="entry = 'OK'" :class="getModalSutatusButtonClass('blue', entry == 'OK')">
               <i class="material-icons left">panorama_fish_eye</i>
             参加</button>
           </div>
-          <div class="col s4">
+          <div class="col m4  s12">
             <button @click="entry = 'NG'" :class="getModalSutatusButtonClass('red', entry == 'NG')">
               <i class="material-icons left">close</i>
               欠席</button>
           </div>
-          <div class="col s4">
+          <div class="col m4 s12">
             <button @click="entry = 'TBD'" :class="getModalSutatusButtonClass('orange', entry == 'TBD')">
               <i class="material-icons left">report_problem</i>
             未定</button>
@@ -185,7 +185,7 @@ export default {
         .set(sendData, () => {})
         .then(() => {
           // 件数を計算したい
-          // console.log(this.$data.entry);
+          console.log(this.$data.entry);
           // console.log($data.entry);
           // console.log(this.entry);
           // switch (this.$data.entry) {
